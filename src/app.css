@@ -1,0 +1,39 @@
+/* Write your global styles here, in PostCSS syntax */
+@import './styles/tailwind.css';
+@import './styles/vars.css';
+
+html,
+body {
+	height: 100%;
+	font-family: Helvetica, sans-serif;
+}
+
+pre {
+	display: inline-flex;
+	padding: 0.5rem;
+	width: 100%;
+	border-radius: 0.25rem
+}
+
+code {
+	background-color: rgba(44, 43, 43, 0.6);
+	color: rgb(190 18 60 / var(--tw-text-opacity));
+	border-radius: 0.25rem;
+	padding: 0 0.5rem;
+
+
+}
+
+body {
+	color: white;
+	background-color: #131416;
+}
+
+ol {
+	list-style: number;
+	padding: 1rem;
+}
+
+ol > li {
+	margin: 1rem 0;
+}
