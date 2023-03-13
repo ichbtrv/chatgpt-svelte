@@ -19,7 +19,9 @@
 	</div>
 
 	<div class="flex flex-col w-full px-8 items-center gap-2">
-		<div class="h-[700px] w-full bg-black bg-opacity-20 rounded-md p-4 overflow-y-auto flex flex-col gap-4">
+		<div
+			class="h-[700px] w-full bg-black bg-opacity-20 rounded-md p-4 overflow-y-auto flex flex-col gap-4"
+		>
 			<div class="flex flex-col gap-2">
 				{#each $chatMessages.messages as message}
 					<ChatMessage type={message.role} message={message.content} />
