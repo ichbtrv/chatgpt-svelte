@@ -9,11 +9,24 @@ Video Link: https://ivanprojects.s3.us-west-1.amazonaws.com/Screen+Recording+202
  - Persisted Chat History (Setup for local storage but able to be adapted)
  - Auto Scrolling/Message streaming
  
-## Using the App
+## Running Dev Server
 1. pnpm Install
-2. Add an OPENAI_KEY to an .env file with your open ai key
-3. Enjoy
+1. Add an OPENAI_KEY to an .env file with your open ai key
+1. Run:
+  ```bash
+  pnpm dev
+  ```
+1. Enjoy
 
+## Running Docker Container
+1. Build docker image
+  ```bash
+  docker build -t chatgpt-svelte .
+  ```
+1. Run docker image w/ environment variable
+  ```bash
+  docker run -e OPENAI_KEY=<your-key> -p 8080:8080 chatgpt-svelte
+  ```
 
 ## Stores
 - Chat Messages 

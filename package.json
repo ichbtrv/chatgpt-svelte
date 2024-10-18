@@ -1,10 +1,12 @@
 {
-	"name": "chatbot",
+	"name": "chatgpt-svelte",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"docker-build": "docker build -t chatgpt-svelte:$(pnpm pkg get version) .",
+		"serve": "node -r dotenv/config build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -12,9 +14,12 @@
 		"lint": "prettier --plugin-search-dir . --check .",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
+	"dependencies": {
+		"dotenv": "^16.4.5",
+		"isomorphic-dompurify": "^1.1.0"
+	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/adapter-vercel": "^2.3.0",
+		"@sveltejs/adapter-node": "^5.2.8",
 		"@sveltejs/kit": "^1.5.0",
 		"@types/common-tags": "^1.8.1",
 		"@types/dompurify": "^2.4.0",
@@ -22,7 +27,6 @@
 		"autoprefixer": "^10.4.13",
 		"dompurify": "^3.0.1",
 		"gpt3-tokenizer": "^1.1.5",
-		"isomorphic-dompurify": "^1.1.0",
 		"marked": "^4.2.12",
 		"openai": "^3.2.1",
 		"postcss": "^8.4.21",
