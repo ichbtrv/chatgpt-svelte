@@ -1,17 +1,12 @@
-import { OPENAI_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import type { CreateChatCompletionRequest, ChatCompletionRequestMessage } from 'openai';
 import type { RequestHandler } from './$types';
 import { getTokens } from '$lib/utils/tokenizer';
 import { json } from '@sveltejs/kit';
-import type { Config } from '@sveltejs/adapter-vercel';
-
-export const config: Config = {
-  runtime: 'edge'
-};
 
 export const POST: RequestHandler = async ({ request }) => {
   try {
-    if (!OPENAI_KEY) {
+    if (!env.OPENAI_KEY) {
       throw new Error('OPENAI_KEY env variable not set');
     }
 
@@ -37,7 +32,7 @@ export const POST: RequestHandler = async ({ request }) => {
     const moderationRes = await fetch('https://api.openai.com/v1/moderations', {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${OPENAI_KEY}`
+        Authorization: `Bearer ${env.OPENAI_KEY}`
       },
       method: 'POST',
       body: JSON.stringify({
@@ -74,7 +69,7 @@ export const POST: RequestHandler = async ({ request }) => {
 
     const chatResponse = await fetch('https://api.openai.com/v1/chat/completions', {
       headers: {
-        Authorization: `Bearer ${OPENAI_KEY}`,
+        Authorization: `Bearer ${env.OPENAI_KEY}`,
         'Content-Type': 'application/json'
       },
       method: 'POST',
